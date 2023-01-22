@@ -1,0 +1,108 @@
+.App{
+    width: 100%;
+    height: 100vh;
+    background: #faf9fb;
+    overflow-x: hidden;
+}
+
+.App::-webkit-scrollbar{
+    display: none;
+}
+
+/* Header Style  Starts*/
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo{
+    min-width: 40px;
+    width: 50px;
+}
+.inputBox{
+    background:#fff;
+    border-radius: 25px;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 8px 15px;
+    width: 120px;
+}
+.inputBox .searchIcon{
+    color: #787a84;
+    font-size: 20px;
+}
+.inputBox input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-left: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.shoppingCart{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+.shoppingCart .cart{
+    font-size: 30px;
+    color: #373848;
+}
+.shoppingCart .cart_content{
+    position: absolute;
+    background: #f8901c;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    width: 20px;
+    top: -10px;
+    right: -10px;
+    height: 20px;
+}
+.shoppingCart .cart_content p{
+    font-weight: 500;
+    color: #faf9fb;
+}
+
+.profileContainer{
+    display: flex;
+    align-items: center;
+}
+.profileContainer .imgBox img{
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.profileContainer .userName{
+    font-size: 16px;
+    margin-left: 8px;
+    font-weight: 500;
+    align-items: center;
+    display: none;
+}
+.toggleMenu{
+    transform: rotate(90deg);
+}
+.toggleMenu .toggleIcon{
+    color:#373848;
+    font-size: 30px;
+}
+/* Header Style  End*/
