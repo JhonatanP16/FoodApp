@@ -106,3 +106,98 @@ header{
     font-size: 30px;
 }
 /* Header Style  End*/
+
+/* Main Section */
+main{
+    width: 100%;
+    height: 100vh;
+    margin-top: 60px;
+}
+/* Main Sextion end */
+
+
+/* Bottom Menu */
+.bottomMenu{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    background: #d5d5d5;
+    border-radius: 25px 25px 0 0;
+    z-index: 101;
+}
+.bottomMenu ul{
+    display: flex;
+}
+.bottomMenu li{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+}
+.bottomMenu li a{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    flex-direction: column;
+}
+.bottomMenu li a .icon{
+    position: relative;
+    display: block;
+    line-height: 70px;
+    text-align: center;
+    transition: 0.5s;
+}
+.bottomMenu li a .icon .MuiSvgIcon-root{
+    font-size: 25px;
+    color: #373848;
+}
+.bottomMenu li.active a .icon{
+    transform: translateY(-26px);
+}
+
+.bottomMenu li.active a .icon .MuiSvgIcon-root{
+    color: #faf9fb;
+    transition: 0.5s;
+}
+.indicator{
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    background: #f8901c;
+    border-radius: 50%;
+    top: -50%;
+    border: 6px solid #faf9fb;
+    transition: 0.5s;
+}
+.indicator::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 18px;
+    height: 18px;
+    background: transparent;
+    border-top-right-radius: 18px;
+    box-shadow: 0px -10px 0 0 #faf9fb;
+}
+.indicator::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    width: 18px;
+    height: 18px;
+    background: transparent;
+    border-top-left-radius: 18px;
+    box-shadow: 0px -10px 0 0 #faf9fb;
+}
+/* End Botom Menu */
