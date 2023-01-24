@@ -3,12 +3,16 @@ import './App.css'
 import Delivery from './assets/delivery.png'
 import MenuContainer from "./components/MenuContainer"
 import { AccountBalance, AccountBalanceWalletRounded, Chat, Favorite, HomeRounded, Settings, SummarizeRounded } from "@mui/icons-material"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import BannerName from "./components/BannerName"
 import SubmenuContainer from "./components/SubmenuContainer"
 import MenuCard from "./components/MenuCard"
 import { MenuItems,Items } from "./components/Data"
+import ItemCard from "./components/ItemCard"
 function App() {
+  const [isMainData, setIsMainData] = useState(
+    Items.filter(element => element.itemId ==="buger01")
+  )
   useEffect(()=>{
     const menuLi = document.querySelectorAll('#menu li');
     function setMenuActive(){
@@ -26,7 +30,11 @@ function App() {
       this.classList.add('active');
     }
     menuCards.forEach(n => n.addEventListener('click',setMenuCardActive))
-  },[])
+  },[isMainData])
+  //setmaindata
+  const setData = (itemId) => {
+    setIsMainData( Items.filter(element => element.itemId === itemId))
+  }
   return (
     <div className="App">
       {/* Header Section */}
@@ -52,11 +60,12 @@ function App() {
                 {
                   MenuItems && MenuItems.map(data =>{
                     return(
-                      <div key={data.id}>
+                      <div key={data.id} onClick={()=>setData(data.itemId)}>
                       <MenuCard 
                       imgSrc={data.imgSrc} 
                       name={data.name}
-                      isActive = {data.id === 1 ? true : false}/>
+                      isActive = {data.id === 1 ? true : false}
+                      />
                       </div>
                     )
                   })
@@ -64,6 +73,18 @@ function App() {
                
             </div>
             <div className="dishitemContainer">
+              {isMainData && isMainData.map(data=>{
+                return(
+                  <ItemCard
+                  key={data.id}
+                  itemId={data.id}
+                  imgSrc={data.imgSrc} 
+                  name={data.name} 
+                  price={data.price}
+                  ratings={data.ratings}
+                  />
+                )
+              })}
               
             </div>
           </div>
