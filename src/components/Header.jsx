@@ -1,8 +1,14 @@
 import { BarChart, SearchRounded, ShoppingCart } from '@mui/icons-material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Logo from '../assets/logo.png'
 import Avatar from '../assets/Avatar.jpg'
 const Header = () => {
+    useEffect(()=>{
+        const toggleMenu = document.querySelector('.toggleMenu');
+        toggleMenu.addEventListener('click',()=>{
+            document.querySelector('.rightMenu').classList.toggle('active')
+        })
+    },[])
   return (
     <header>
         <img 
