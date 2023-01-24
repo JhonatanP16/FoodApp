@@ -6,7 +6,7 @@ const Header = () => {
     useEffect(()=>{
         const toggleMenu = document.querySelector('.toggleMenu');
         toggleMenu.addEventListener('click',()=>{
-            document.querySelector('.rightMenu').classList.toggle('active')
+            document.querySelector('.rightMenu').classList.add('active')
         })
     },[])
   return (

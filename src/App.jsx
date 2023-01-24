@@ -11,10 +11,12 @@ import { MenuItems,Items } from "./components/Data"
 import ItemCard from "./components/ItemCard"
 import DebitCard from "./components/DebitCard"
 import CartItems from "./components/CartItems"
+import { useStateValue } from "./Context/StateProvider"
 function App() {
   const [isMainData, setIsMainData] = useState(
     Items.filter(element => element.itemId ==="buger01")
   )
+  const [{cart},dispatch] = useStateValue();
   useEffect(()=>{
     const menuLi = document.querySelectorAll('#menu li');
     function setMenuActive(){
@@ -32,7 +34,7 @@ function App() {
       this.classList.add('active');
     }
     menuCards.forEach(n => n.addEventListener('click',setMenuCardActive))
-  },[isMainData])
+  },[isMainData,cart])
   //setmaindata
   const setData = (itemId) => {
     setIsMainData( Items.filter(element => element.itemId === itemId))
@@ -97,24 +99,36 @@ function App() {
                 <DebitCard/>
               </div>
           </div>
-          <div className="cartCheckOutContainer">
-            <SubmenuContainer name={"Cart Items"}/>
-            <div className="cartContainer">
-              <div className="cartItems">
-                <CartItems
-                name={"Burguer"}
-                imgSrc={"https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fburger3.png?alt=media&token=0ebe8311-6378-411b-9b6e-d7a6d2a106a2"}
-                qty={"4"}
-                price={"7.95"}
-                />
-              </div>
-            </div>
-            <div className="totalSection">
-              <h3>Total</h3>
-              <p><span>$</span>45.5</p>
-            </div>
-            <button className="checkOut">Check Out</button>
-          </div>
+              {
+                !cart ? <div>xd</div> : 
+                  <div className="cartCheckOutContainer">
+                    <SubmenuContainer name={"Cart Items"}/>
+                    <div className="cartContainer">
+                      <div className="cartItems">
+                        {
+                          cart.map(data =>{
+                            return(
+                              <CartItems
+                              key={data.id}
+                              id={data.id}
+                              name={data.name}
+                              imgSrc={data.imgSrc}
+                              qty={"4"}
+                              price={data.price}/>
+                            )
+                          })
+                        }
+                      
+                      
+                      </div>
+                    </div>
+                    <div className="totalSection">
+                      <h3>Total</h3>
+                      <p><span>$</span>45.5</p>
+                    </div>
+                    <button className="checkOut">Check Out</button>
+                    </div>
+              }
         </div>
       </main>
       {/* Botoom Menu */}
