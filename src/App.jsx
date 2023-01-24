@@ -5,6 +5,9 @@ import MenuContainer from "./components/MenuContainer"
 import { AccountBalance, AccountBalanceWalletRounded, Chat, Favorite, HomeRounded, Settings, SummarizeRounded } from "@mui/icons-material"
 import { useEffect } from "react"
 import BannerName from "./components/BannerName"
+import SubmenuContainer from "./components/SubmenuContainer"
+import MenuCard from "./components/MenuCard"
+import { MenuItems,Items } from "./components/Data"
 function App() {
   useEffect(()=>{
     const menuLi = document.querySelectorAll('#menu li');
@@ -13,6 +16,16 @@ function App() {
       this.classList.add('active');
     }
     menuLi.forEach(n => n.addEventListener('click',setMenuActive))
+    /*Menu active toggle */
+    const menuCards = document
+    .querySelector('.rowContainer')
+    .querySelectorAll('.rowMenuCard');
+
+    function setMenuCardActive(){
+      menuCards.forEach(n=>n.classList.remove('active'));
+      this.classList.add('active');
+    }
+    menuCards.forEach(n => n.addEventListener('click',setMenuCardActive))
   },[])
   return (
     <div className="App">
@@ -28,6 +41,31 @@ function App() {
             src={Delivery} 
             alt=""
             className="deliveryPic"/>
+          </div>
+          {/* dishContainer */}
+          <div className="dishContainer">
+            <div className="menuCard">
+              <SubmenuContainer name={"Menu Category"}/>
+            </div>
+            <div className="rowContainer">
+             
+                {
+                  MenuItems && MenuItems.map(data =>{
+                    return(
+                      <div key={data.id}>
+                      <MenuCard 
+                      imgSrc={data.imgSrc} 
+                      name={data.name}
+                      isActive = {data.id === 1 ? true : false}/>
+                      </div>
+                    )
+                  })
+                }
+               
+            </div>
+            <div className="dishitemContainer">
+              
+            </div>
           </div>
         </div>
         <div className="rightMenu">
